@@ -1,7 +1,6 @@
 #!/bin/bash
-SCRIPTDIR0=Anima-Scripts-Public/ms_lesion_segmentation
-SCRIPTDIR=.
-echo "$SCRIPTDIR"
+#SCRIPTDIR0=Anima-Scripts-Public/ms_lesion_segmentation
+#echo "$SCRIPTDIR"
 
 #DATADIR=/temp_dd/igrida-fs1/fgalassi/training
 DATADIR=testing
@@ -19,7 +18,7 @@ for patient in $DATADIR/*; do
 	T1gd=$DATADIR/"$patientID"/3DT1GADO.nii.gz
 	T2=$DATADIR/"$patientID"/T2.nii.gz
 
-	python3 $SCRIPTDIR0/animaMSExamPreparation.py -r $FLAIR -f $FLAIR -t $T1 -g $T1gd -T $T2
+	python3 animaMSExamPreparation.py -r $FLAIR -f $FLAIR -t $T1 -g $T1gd -T $T2
 
 #-o $DATADIR/"$patientID"/ 
 : '
