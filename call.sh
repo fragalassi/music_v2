@@ -2,8 +2,7 @@
 #SCRIPTDIR0=Anima-Scripts-Public/ms_lesion_segmentation
 #echo "$SCRIPTDIR"
 
-#DATADIR=/temp_dd/igrida-fs1/fgalassi/training
-DATADIR=testing
+DATADIR=../testing
 
 for patient in $DATADIR/*; do	
 
