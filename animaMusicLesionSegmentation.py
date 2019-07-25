@@ -3,9 +3,9 @@
 
 import os
 import sys
-import shutil
+#import shutil
 import argparse
-import tempfile
+#import tempfile
 
 if sys.version_info[0] > 2 :
     import configparser as ConfParser
@@ -30,7 +30,7 @@ import animaMusicLesionCoreProcessing as coreproc
 import animaMusicLesionPostProcessing as postproc
 import totalLesionLoadEstimator as tll_estimator
 
-tmpFolder = tempfile.mkdtemp()
+#tmpFolder = tempfile.mkdtemp()
 
 parser = argparse.ArgumentParser(
     prog='animaMusicLesionSegmentation.py',
@@ -41,7 +41,7 @@ parser.add_argument('-f', '--flair', required=True, help='Path to the MS patient
 parser.add_argument('-t', '--t1', required=True, help='Path to the MS patient T1 image')
 parser.add_argument('-T', '--t2', required=True, help='Path to the MS patient T2 image')
 parser.add_argument('-m','--maskImage',required=True,help='path to the MS patient brain mask image')
-parser.add_argument('-o','--outputImage',required=True,help='path to output image')
+parser.add_argument('-o','--outputFolder',required=True,help='path to output image')
 parser.add_argument('-n','--nbThreads',required=False,type=int,help='Number of execution threads (default: 0 = all cores)',default=0)
 
 args=parser.parse_args()
@@ -50,7 +50,7 @@ t1Image=args.t1
 t2Image=args.t2
 flairImage=args.flair
 maskImage=args.maskImage
-outputImage=args.outputImage
+tmpFolder=args.outputFolder
 nbThreads=str(args.nbThreads)
 
 if not(os.path.isfile(t1Image)):
@@ -69,9 +69,10 @@ if not(os.path.isfile(maskImage)):
     print("IO Error: the file "+maskImage+" doesn't exist.")
     quit()
 
-outputFolder=os.path.dirname(outputImage)
-if not(os.path.isdir(outputFolder)) and outputFolder != "":
-    os.makedirs(outputFolder)
+#outputFolder=os.path.dirname(outputImage)
+#if not(os.path.isdir(outputFolder)) and outputFolder != "":
+#    os.makedirs(outputFolder)
+outputImage = os.path.join(tmpFolder, "segm_music_v2.nii.gz")
 
 # First perform additional preprocessing
 print('Starting additional preprocessing of data')
@@ -133,4 +134,4 @@ postproc.music_lesion_post_processing(animaDir, tmpFolder, outputImage, upperOut
                                       atlasCSFUpperImage, atlasWMDownImage, atlasGMDownImage, atlasCSFDownImage,
                                       atlasCSFBSImage, maskUpperImage, maskDownImage, maskBSImage, nbThreads)
 
-shutil.rmtree(tmpFolder)
+#shutil.rmtree(tmpFolder)

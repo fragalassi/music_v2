@@ -32,7 +32,7 @@ def music_lesion_additional_preprocessing(animaDir,animaExtraDataDir,tmpFolder,t
 
     # Decide on whether to use large image setting or small image setting
     command = [animaConvertImage, "-i", t1Image, "-I"]
-    convert_output = check_output(command)
+    convert_output = check_output(command, universal_newlines=True)
     size_info = convert_output.split('\n')[1].split('[')[1].split(']')[0]
     large_image = False
     for i in range(0, 3):

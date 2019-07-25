@@ -25,7 +25,7 @@ def lesion_load_estimation(animaDir,atlasDir,tmpFolder,t1Image,t2Image,flairImag
 
     # Decide on whether to use large image setting or small image setting
     command = [animaConvertImage, "-i", t1Image, "-I"]
-    convert_output = check_output(command)
+    convert_output = check_output(command, universal_newlines=True)
     size_info = convert_output.split('\n')[1].split('[')[1].split(']')[0]
     large_image = False
     for i in range(0, 3):
@@ -33,7 +33,7 @@ def lesion_load_estimation(animaDir,atlasDir,tmpFolder,t1Image,t2Image,flairImag
         if size_tmp >= 256:
             large_image = True
             break
-
+        
     pyramidOptions = ["-p", "4", "-l", "1"]
     if large_image:
         pyramidOptions = ["-p", "5", "-l", "2"]
