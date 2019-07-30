@@ -14,10 +14,9 @@ for patient in $DATADIR/*; do
 	#training/testing MICCAI16
 	FLAIR=$DATADIR/"$patientID"/3DFLAIR.nii.gz
 	T1=$DATADIR/"$patientID"/3DT1.nii.gz
-	T1gd=$DATADIR/"$patientID"/3DT1GADO.nii.gz
 	T2=$DATADIR/"$patientID"/T2.nii.gz
 
-	python3 animaMSExamPreparation.py -r $FLAIR -f $FLAIR -t $T1 -g $T1g -T $T2 -o $DATADIR/"$patientID"/ 
+	python3 animaMSExamPreparation.py -r $FLAIR -f $FLAIR -t $T1 -T $T2 -o $DATADIR/"$patientID"/ 
 
 	#SEGMENTATION
 	#training/testing MICCAI16
