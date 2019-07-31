@@ -26,7 +26,7 @@ for patient in $DATADIR/*; do
 	MASK=$DATADIR/"$patientID"/3DFLAIR_brainMask.nrrd
 	C=$DATADIR/"$patientID"/Consensus.nii.gz
 
-	#python3 $SCRIPTDIR/animaMusicLesionSegmentation.py -f $FLAIR -t $T1 -T $T2 -m $MASK -o $DATADIR/"$patientID"
+	#python3 animaMusicLesionSegmentation.py -f $FLAIR -t $T1 -T $T2 -m $MASK -o $DATADIR/"$patientID"
 
 
     fi
